@@ -42,7 +42,7 @@ body {
   grid-area: sidebar;
   height: 100%;
   background-color: #202642;
-  color: #d5d7e9;
+  color: #dbdbdb;
   overflow-y: auto;
   transition: all 0.5s;
   -webkit-transition: all 0.5s;
@@ -51,6 +51,63 @@ body {
 .sidebar-title {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 10px 10px 0px 10px;
+  margin-bottom: 20px;
+  color: white;
+  box-shadow: 0px 8px 8px -6px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar-title > span {
+  display: none;
+  margin-top: -0.5em;
+}
+
+.sidebar-brand {
+  margin-top: -20px;
+  font-size: 32px;
+  font-weight: 700;
+  padding: 15px;
+}
+
+.sidebar-brand > span {
+  position: relative;
+  top: 0.175em;
+  padding: 0px 5px 0px 0px;
+}
+
+.sidebar-list {
+  padding: 0;
+  margin-top: 15px;
+  list-style-type: none;
+  font-size: 1.25em;
+}
+
+.sidebar-list-item {
+  padding: 15px 15px 15px 20px;
+}
+
+.sidebar-list-item > span {
+  padding: 0px 15px 0px 0px;
+}
+
+.sidebar-list-item:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: white;
+  cursor: pointer;
+  border-right: white 4px solid;
+  /* font-weight: bold; */
+}
+
+.sidebar-response {
+  display: inline !important;
+  position: absolute;
+}
+
+li > span.material-icons-outlined {
+  position: relative;
+  top: 0.15em;
+  font-size: 1.25 em;
 }
 
 /* ----------- MAIN CONTAINER ---------------- */
