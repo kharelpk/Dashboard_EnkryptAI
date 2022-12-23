@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <!-- Head section -->
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enkrypt AI Dashboard</title>
+
+    <!-- Source Sans Pro Regular 400-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Let's add some icons Material Icon from google -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined"
+      rel="stylesheet"
+    />
+
+    <!-- Using custom CSS -->
+    <link href="./css/styles.css" rel="stylesheet" />
+  </head>
+
+  <!-- Body section -->
+  <body>
+    <!-- Overall container for the css grid -->
+    <div class="grid-container">
+      <!-- Header -->
+      <header class="header">
+        <!-- Menu Icon -->
+        <div class="menu-icon" onclick="openSidebar()">
+          <span class="material-icons-outlined">menu</span>
+        </div>
+
+        <div class="header-left">
+          <span class="material-icons-outlined">search</span>
+        </div>
+
+        <div class="header-right">
+          <span class="material-icons-outlined">notifications</span>
+          <span class="material-icons-outlined">account_circle</span>
+          <span class="login-name">Joe Welsh</span>
+        </div>
+      </header>
+      <!-- End Header -->
+
+      <!-- Sidebar for navigation links -->
+      <aside id="sidebar">
+        <!-- Sidebar title, brand image, exit icon-->
+        <div class="sidebar-title">
+          <div class="sidebar-brand">
+            <span class="sidebar-logo-image"
+              ><img
+                id="logo-image"
+                src="./images/Logo_white.svg"
+                alt="logo"
+                height="52"
+            /></span>
+            Enkrypt AI
+          </div>
+
+          <span class="material-icons-outlined" onclick="closeSidebar()"
+            >close</span
+          >
+        </div>
+
+        <!-- Sidebar list of menu itmes-->
+        <ul class="sidebar-list">
+          <li class="sidebar-list-item">
+            <span class="material-icons-outlined">home</span>Home
+          </li>
+
+          <li class="sidebar-list-item">
+            <span class="material-icons-outlined">folder_open</span>Dataset
+          </li>
+
+          <li class="sidebar-list-item">
+            <span class="material-icons-outlined">key</span>Keys
+          </li>
+
+          <li class="sidebar-list-item">
+            <span class="material-icons-outlined">manage_accounts</span>Accounts
+          </li>
+
+          <li class="sidebar-list-item">
+            <span class="material-icons-outlined">dns</span>Server
+          </li>
+
+          <li class="sidebar-list-item">
+            <span class="material-icons-outlined">settings</span>Settings
+          </li>
+
+          <li class="sidebar-list-item">
+            <span class="material-icons-outlined">help_outline</span>Help
+          </li>
+        </ul>
+      </aside>
+      <!-- End Sidebar -->
+
+      <!-- Main -->
+      <main class="main-container"></main>
+      <!-- End Main -->
+    </div>
+
+    <!-- Custom Javascript -->
+    <script src="./js/scripts.js"></script>
+  </body>
+</html>
