@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+<!-- Code unqiue to Login-->
+{% block content %}
+<!-- <h1>Login Page</h1> -->
+
+<div class="content-section col-md-12">
+  <!-- empty action so it posts info to the same route-->
+  <form method="POST" action="">
+    {{form.hidden_tag()}}
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-4">Account Login</legend>
+
+      <div class="form-group mb-2">
+        {{form.email.label(class="form-control-label")}}
+        <!-- Form validation -->
+        {% if form.email.errors%} {{form.email(class="form-control
+        is-invalid")}}
+        <div class="invalid-feedback">
+          {% for error in form.email.errors%}
+          <span>{{error}}</span>
+          {% endfor %}
+        </div>
+        {% else %} {{form.email(class="form-control ")}} {% endif %}
+      </div>
+
+      <div class="form-group mb-2">
+        {{form.password.label(class="form-control-label")}}
+        <!-- Form validation -->
+        {% if form.password.errors%} {{form.password(class="form-control
+        is-invalid")}}
+        <div class="invalid-feedback">
+          {% for error in form.password.errors%}
+          <span>{{error}}</span>
+          {% endfor %}
+        </div>
+        {% else %} {{form.password(class="form-control ")}} {% endif %}
+      </div>
+
+      <div class="form-check mb-2">
+        {{form.remember(class="form-check-input")}}
+        {{form.remember.label(class="form-check-label")}}
+      </div>
+    </fieldset>
+    <div class="form-group mt-2 mb-2">
+      {{form.submit(class = "btn btn-outline-primary")}}
+    </div>
+    <small class="text-muted ml-2">
+      <a href="#" style="text-decoration: none">Forgot Password?</a>
+    </small>
+  </form>
+</div>
+
+<div class="border-top pt-3">
+  <small class="text-muted">
+    Don't have an account yet?
+    <a class="ml-2" href="{{url_for('register')}}">Register now</a>
+  </small>
+</div>
+
+{% endblock content%}
