@@ -1,6 +1,7 @@
 # import necessay files
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
 import os
 
 
@@ -13,5 +14,7 @@ app.config['SECRET_KEY']='93c34a429a3473ca9cbd70ab5c6b931a'
 app.config['SQLALCHEMY_DATABASE_URI']= 'sqlite:///site.db'
 # Create the database
 db=SQLAlchemy(app)
+# Password manager
+bcrypt = Bcrypt(app)
 
 from dashboardapp import routes
