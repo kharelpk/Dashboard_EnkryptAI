@@ -113,6 +113,10 @@ li > span.material-icons-outlined {
   font-size: 1.25 em;
 }
 
+.header-right span:hover {
+  color: #202642;
+  cursor: pointer;
+}
 /* ----------- MAIN CONTAINER ---------------- */
 .main-container {
   grid-area: main;

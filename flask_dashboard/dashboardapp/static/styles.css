@@ -12,6 +12,15 @@ body {
   line-height: 1px;
 }
 
+.header-left span:hover {
+  /* color: #202642; */
+  cursor: pointer;
+}
+.header-right span:hover {
+  /* color: #202642; */
+  cursor: pointer;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: 260px 1fr 1fr 1fr;
@@ -99,9 +108,14 @@ body {
   /* font-weight: bold; */
 }
 
-#home-li {
+/* #home-li {
+  border-right: white 4px solid;
+} */
+
+.sidebar-white-edge {
   border-right: white 4px solid;
 }
+
 .sidebar-response {
   display: inline !important;
   position: absolute;
