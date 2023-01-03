@@ -1,0 +1,79 @@
+{% extends "layout_dashboard.html" %} {% block dashboard_content %}
+<!--Account page-->
+<!-- Main title-->
+<div class="main-title">
+  <p class="font-weight-bold">DATASET > {{title}}</p>
+</div>
+
+<!-- Main content goes here-->
+
+<!--We want ADD, CLONE, DELETE functionality-->
+<div class="main-dataset">
+  <div class="content-dataset">
+    <!-- Header for the datasets table-->
+    <div class="header-dataset">
+      <form
+        method="POST"
+        action=""
+        id="upload-dataset-form"
+        enctype="multipart/form-data"
+      >
+        {% if dataset_encrypted %}
+        <input
+          type="submit"
+          id="encrypt-dataset-btn"
+          name="file"
+          hidden
+          disabled
+        />
+        <!--our custom file upload button-->
+        <label for="encrypt-dataset-btn" id="encrypted-label">
+          <span class="material-icons-outlined">toggle_on </span>
+          Encrypted</label
+        >
+        {% else %}
+        <input type="submit" id="encrypt-dataset-btn" name="file" hidden />
+        <!--our custom file upload button-->
+        <label for="encrypt-dataset-btn" id="encrypt-label">
+          <span class="material-icons-outlined">toggle_off </span>
+          Encrypt</label
+        >
+        {% endif %}
+      </form>
+
+      <!-- Clone button-->
+      <input type="file" id="clone-btn" hidden disabled />
+      <!--our custom file upload button-->
+      <label for="clone-btn"
+        ><span class="material-icons-outlined">content_copy</span>Clone</label
+      >
+
+      <!-- Delete button-->
+      <input type="file" id="delete-btn" hidden disabled />
+      <!--our custom file upload button-->
+      <label for="delete-btn"
+        ><span class="material-icons-outlined">remove_circle_outline</span
+        >Delete</label
+      >
+
+      <!-- Return button-->
+      <a href="{{ url_for('dataset') }}">
+        <span class="material-icons-outlined">arrow_back</span></a
+      >
+    </div>
+
+    <!-- Warning message-->
+    <p>{{warning}}</p>
+
+    <div class="content-table">{{df_html | safe}}</div>
+
+    <!-- Table for the datasets-->
+  </div>
+
+  <!--Simple Javascript-->
+  <script>
+    document.getElementById("li-dataset").classList.add("sidebar-select");
+  </script>
+
+  {% endblock dashboard_content %}
+</div>

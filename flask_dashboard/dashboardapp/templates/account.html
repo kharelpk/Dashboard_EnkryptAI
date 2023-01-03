@@ -1,0 +1,48 @@
+{% extends "layout_dashboard.html" %} {% block dashboard_content %}
+<!--Account page-->
+<!-- Main title-->
+<div class="main-title">
+  <p class="font-weight-bold">MANAGE ACCOUNTS</p>
+</div>
+
+<!-- Main content goes here-->
+
+<div class="main-account-header">
+  <div class="account-container-header">
+    <div class="account-container-inner">
+      <img class="account-img" src="{{image_file}}" width="150px" />
+      <div class="account-info">
+        <!-- Username and email-->
+        <h3 class="account-heading">
+          {{current_user.firstname}} {{current_user.lastname}}
+        </h3>
+        <p class="text-secondary">{{current_user.email}}</p>
+        <!-- FORM HERE to update the email account-->
+        <small class="text-muted">
+          <a class="account-update" href="{{url_for('update_account')}}">
+            <span class="material-icons-outlined"> badge </span>Update account
+          </a>
+        </small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main-account">
+  <div class="account-container">
+    <!--OPENS UP ADDITIONAL THINGS if you are a ADMIN-->
+    <!-- <hr /> -->
+    {% if current_user.email == "admin@admin.com" %}
+    <p>You have admin priviledges.</p>
+    {% else %}
+    <p>You do not have admin priviledges.</p>
+    {% endif %}
+  </div>
+</div>
+
+<!--Simple Javascript-->
+<script>
+  document.getElementById("li-account").classList.add("sidebar-select");
+</script>
+
+{% endblock dashboard_content %}

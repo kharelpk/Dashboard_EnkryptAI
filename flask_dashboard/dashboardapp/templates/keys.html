@@ -1,0 +1,84 @@
+{% extends "layout_dashboard.html" %} {% block dashboard_content %}
+<!--Account page-->
+<!-- Main title-->
+<div class="main-title">
+  <p class="font-weight-bold">ACCESS</p>
+</div>
+
+<!-- Main content goes here-->
+
+<!--We want ADD, CLONE, DELETE functionality-->
+<div class="main-keys">
+  <div class="content-keys">
+    <!-- Header for the keys table-->
+    <div class="header-keys">
+      <!-- Add button-->
+      <form
+        method="GET"
+        action=""
+        id="refresh-keys-form"
+        enctype="multipart/form-data"
+      >
+        <input type="file" id="refresh-keys-btn" name="file" hidden />
+        <!--our custom file upload button-->
+        <label for="add-keys-btn" id="refresh-label"
+          ><span class="material-icons-outlined">refresh </span>Refresh</label
+        >
+        <!-- Auto trigger submission-->
+        <input type="submit" hidden />
+      </form>
+
+    </div>
+
+    <!-- Warning message-->
+    <p>{{warning}}</p>
+        <b>10 active keys</b> 
+    <!-- Table for the keys-->
+    
+    {% for key in keys %}
+    <div class="keys-table">
+        
+        <div class="keys-table-inner">
+            <table>
+                <thead></thead>
+                <tbody class="keys-table-inner-inner">
+                    <tr class="keys-table-inner-inner-rows">
+                        <td>
+                            <p><span class="keys-text-labels">Key ID: </span><span class="keys-text-data">{{key.key_id}}</span></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p><span class="keys-text-labels">Filename: </span><span class="keys-text-data">{{key.filename}}</span></p> 
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+            <!-- <p><span class="keys-text-labels">Key ID: </span><span class="keys-text-data">{{key.key_id}}</span></p>
+            <p><span class="keys-text-labels">Filename: </span><span class="keys-text-data">{{key.filename}}</span></p>  -->
+            <p> <span class="keys-access-count">{{key.num_users}}</span> <span class="material-icons-outlined keys-text-labels"> people  </span> </p> 
+        
+        </div>
+        
+    </div>
+    <hr>
+    {% endfor %}
+    
+  </div>
+</div>
+
+  <!--Simple Javascript-->
+  <script>
+    document.getElementById("li-keys").classList.add("sidebar-select");
+  </script>
+
+  <script>
+    document.getElementById("upload-keys-form").onchange = function () {
+      // submitting the form
+      document.getElementById("upload-keys-form").submit();
+    };
+  </script>
+
+  {% endblock dashboard_content %}
+</div>

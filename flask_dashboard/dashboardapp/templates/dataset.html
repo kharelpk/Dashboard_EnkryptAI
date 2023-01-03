@@ -1,0 +1,110 @@
+{% extends "layout_dashboard.html" %} {% block dashboard_content %}
+<!--Account page-->
+<!-- Main title-->
+<div class="main-title">
+  <p class="font-weight-bold">DATASET</p>
+</div>
+
+<!-- Main content goes here-->
+
+<!--We want ADD, CLONE, DELETE functionality-->
+<div class="main-dataset">
+  <div class="content-dataset">
+    <!-- Header for the datasets table-->
+    <div class="header-dataset">
+      <!-- Add button-->
+      <form
+        method="POST"
+        action=""
+        id="upload-dataset-form"
+        enctype="multipart/form-data"
+      >
+        <input type="file" id="add-dataset-btn" name="file" hidden />
+        <!--our custom file upload button-->
+        <label for="add-dataset-btn" id="add-label"
+          ><span class="material-icons-outlined">add_circle </span>Add</label
+        >
+        <!-- Auto trigger submission-->
+        <input type="submit" hidden />
+      </form>
+
+      <!-- Clone button-->
+      <input type="file" id="clone-btn" hidden disabled/>
+      <!--our custom file upload button-->
+      <label for="clone-btn"
+        ><span class="material-icons-outlined">content_copy</span>Clone</label
+      >
+
+      <!-- Delete button-->
+      <input type="file" id="delete-btn" hidden disabled/>
+      <!--our custom file upload button-->
+      <label for="delete-btn"
+        ><span class="material-icons-outlined">remove_circle_outline</span
+        >Delete</label
+      >
+    </div>
+
+    <!-- Warning message-->
+    <p>{{warning}}</p>
+
+    <!-- Table for the datasets-->
+
+      <div class="datasets-table">
+        <div class="datasets-table-inner">
+            <table class="datasets-table-container" cellpadding="5" cellspacing="5" style="overflow-y:scroll">
+            <thead class="datasets-table-header">
+                <tr class = "datasets-table-header-row">
+                    <th scope="col"><input type="checkbox" disabled="disabled" name="keywords" value="keywords"/></th>
+                    <th scope="col">Dataset Name</th>
+                    <th colspan="2">Owner</th>
+                    <!-- <th scope="col"></th> -->
+                    <th scope="col">Date Created</th>
+                    <th scope="col">Encrypted</th>
+                    <th scope="col">Comments</th>
+                </tr>
+            </thead>
+            <tbody class= "datasets-table-body">
+                {% for data in datasets %}
+                <tr class="border-bottom">
+                    <th scope="row"><input type="checkbox" disabled="disabled" name="keywords" value="keywords"/></th>
+                    <td><a class= "table-data-filename" href="{{url_for('dataview',dataset_id = data.id )}}">{{data.filename}}</a></td>
+                    <td>
+                        {{data.owner.firstname}} {{data.owner.lastname}}
+                    </td>
+                    <td><img
+                        class="account-img-icon"
+                        src="{{url_for('static', filename= 'images/profile_pictures/'+data.owner.image_file)}}"
+                        alt="profile picture"
+                    /></td>
+                    <td>{{data.date_called.strftime('%Y-%m-%d')}}</td>
+                    <td>
+                        {% if data.is_encrypted %}
+                        <span class="material-icons-outlined" id="encryption_toggle_on">toggle_on</span>
+                        {% else %}
+                        <span class="material-icons-outlined">toggle_off</span>
+                        {% endif %}
+                    </td>
+                    <td>{{data.description}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Simple Javascript-->
+  <script>
+    document.getElementById("li-dataset").classList.add("sidebar-select");
+  </script>
+
+  <script>
+    document.getElementById("upload-dataset-form").onchange = function () {
+      // submitting the form
+      document.getElementById("upload-dataset-form").submit();
+    };
+  </script>
+
+  {% endblock dashboard_content %}
+</div>

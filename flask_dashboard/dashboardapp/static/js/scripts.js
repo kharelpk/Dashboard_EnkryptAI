@@ -18,6 +18,8 @@ function closeSidebar() {
   }
 }
 
+// ------------------ DATASET ----------------------------
+
 // ------------ CHARTS ----------------------
 
 var barChartOptions = {

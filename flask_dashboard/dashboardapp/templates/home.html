@@ -1,0 +1,68 @@
+{% extends "layout_dashboard.html" %} {% block dashboard_content %}
+<!--Home page-->
+<!-- Main title-->
+<div class="main-title">
+  <p class="font-weight-bold">HOME</p>
+</div>
+
+<!-- Main cards-->
+<div class="main-cards">
+  <!-- EACH CARD-->
+  <div class="card">
+    <div class="card-inner">
+      <p class="text-primary">DATABASE</p>
+      <span class="material-icons-outlined text-blue"> inventory </span>
+    </div>
+
+    <span class="text-primary font-weight-bold">249</span>
+  </div>
+
+  <!-- EACH CARD-->
+  <div class="card">
+    <div class="card-inner">
+      <p class="text-primary">API CALLS</p>
+      <span class="material-icons-outlined text-orange"> api </span>
+    </div>
+
+    <span class="text-primary font-weight-bold">3260</span>
+  </div>
+
+  <!-- EACH CARD-->
+  <div class="card">
+    <div class="card-inner">
+      <p class="text-primary">USER ACCOUNTS</p>
+      <span class="material-icons-outlined text-green"> people </span>
+    </div>
+
+    <span class="text-primary font-weight-bold">79</span>
+  </div>
+
+  <!-- EACH CARD-->
+  <div class="card">
+    <div class="card-inner">
+      <p class="text-primary">ALERTS</p>
+      <span class="material-icons-outlined text-red"> warning </span>
+    </div>
+
+    <span class="text-primary font-weight-bold">10</span>
+  </div>
+</div>
+
+<!-- Section with Charts -->
+<div class="charts">
+  <div class="charts-card">
+    <p class="chart-title">Top analytics- API calls</p>
+    <div id="bar-chart"></div>
+  </div>
+
+  <div class="charts-card">
+    <p class="chart-title">Server Status</p>
+    <div id="pie-chart"></div>
+  </div>
+</div>
+
+<!--Simple Javascript-->
+<script>
+  document.getElementById("li-home").classList.add("sidebar-select");
+</script>
+{% endblock dashboard_content %}
