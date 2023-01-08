@@ -20,6 +20,7 @@ app.config['SQLALCHEMY_BINDS']= {
 app.config['UPLOAD_EXTENSIONS'] = ['.db', '.csv']
 # Create the database
 db=SQLAlchemy(app)
+
 # Password manager
 bcrypt = Bcrypt(app)
 # Login manager
@@ -29,4 +30,8 @@ login_manager.login_view = 'login'
 # Blue info alert from bootstrap
 login_manager.login_message_category='info'
 
+
+# Graph types
+CHART_OPTIONS = ['HISTOGRAM', 'PIE CHART', 'BAR CHART']
+ADMIN_EMAIL = 'admin@admin.com'
 from dashboardapp import routes

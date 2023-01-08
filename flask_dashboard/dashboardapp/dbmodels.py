@@ -65,7 +65,6 @@ class Encryption(db.Model):
     encryption_nonce = db.Column(db.Text, nullable=False, default='None')
     date_called = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     encryption_details = db.Column(db.Text, nullable = False, default='')
-    
     # returns the object representation in string format.
     def __repr__(self):
         return f"Encryption('{self.dataset_id}','{self.encryption_type}', '{self.date_called}','{self.encryption_details}')"
