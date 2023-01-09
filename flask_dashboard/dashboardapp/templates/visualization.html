@@ -1,0 +1,179 @@
+{% extends "layout_dashboard.html" %} {% block dashboard_content %}
+<!--Account page-->
+<!-- Main title-->
+<div class="main-title">
+  <p class="font-weight-bold">VISUALIZATION</p>
+</div>
+
+<!-- Main content goes here-->
+
+<!--We want ADD, CLONE, DELETE functionality-->
+<div class="main-viz">
+  <!-- Dataset selector tab -->
+  <div class="content-viz">
+    <!-- Header for the dataset selection-->
+    <div class = "content-selector-viz">
+      <p class="font-weight-bold">Dataset</p>
+
+      <form         
+      method="POST"
+      action=""
+      id="select-dataset-form"
+      enctype="multipart/form-data">
+        <select name="dataset-filename" id="dataset-selector">
+            {% for dataset in datasets %}
+                {% if dataset.filename == selected_dataset.filename %}
+                    <option value="{{dataset.filename}}" selected>{{dataset.filename}}</option>
+                {% else %}
+                <option value="{{dataset.filename}}">{{dataset.filename}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <p class="font-weight-bold">Chart Type</p>
+        <select name="chart-type" id="charttype-selector">
+            {% for chart in chart_options %}
+                {% if chart== selected_chart %}
+                    <option value="{{chart}}" selected>{{chart}}</option>
+                {% else %}
+                <option value="{{chart}}">{{chart}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+
+        <p class = "font-weight-bold">Column</p>
+        <select name="column-name" id="column-selector">
+            {% for column in columns %}
+                {% if column== selected_column %}
+                    <option value="{{column}}" selected>{{column}}</option>
+                {% else %}
+                <option value="{{column}}">{{column}}</option>
+                {% endif %}
+            {% endfor %}
+        <!-- Auto trigger submission-->
+        <input type="submit" hidden />
+      </form>
+    </div>
+
+
+    <!-- Content for selecting columns-->
+    <div class = "content-selector-columns-viz">
+        <p class="font-weight-bold">Available fields <span class="material-icons-outlined">
+            arrow_drop_down
+            </span></p>
+
+        <ul class="columns-list" >
+            {% for column in columns %}
+            <li class="columns-list-item"> {{column}}</li>
+            {% endfor %}
+        </ul>
+      </div>
+    
+    
+  </div>
+
+  <div class="content-viz">
+    <!-- Header for the viz table-->
+
+    <!-- Warning message-->
+    <div class = "content-chart-viz">
+        <p class="font-weight-bold">{{selected_chart}}</p>
+    </div>
+    
+    <!-- chart content-->
+    <!-- <div id="chart-viz-page" style="border: 1px solid #444"></div> -->
+    <!-- <script>const yData = [5, 8, 24, 16, 32, 4, 3, 1, 11];</script> -->
+
+    {% if selected_chart == chart_options[0] %}
+    <div>
+        <canvas id="histogramChart" height= "300"></canvas>
+    </div>
+    {% elif selected_chart ==  chart_options[1] %}
+    <div>
+        <canvas id="pieChart" height= "300"></canvas>
+    </div>
+    {% endif %}
+
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      
+
+      <!-- Histogram-->
+      <script>
+        const ctx = document.getElementById('histogramChart');
+      
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: {{labels}},
+            datasets: [{
+              label: '{{selected_column}}',
+              data: {{values}},
+              borderWidth: 1,
+              backgroundColor: 'rgba(39, 182, 245, 0.8)',
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      </script>
+
+      <!-- Pie chart-->
+      <script>
+
+        const ctx2 = document.getElementById('pieChart');
+
+        new Chart(ctx2, {
+          type: 'doughnut',
+          data: {
+            labels: {{labels}},
+            datasets: [{
+              label: '{{selected_column}}',
+              data: {{values}},
+              hoverOffset: 4,
+            }]
+          }
+        });
+
+      </script>
+
+
+
+  </div>
+
+  <div class="content-viz">
+    <!-- Header for the viz table-->
+
+    <!-- Warning message-->
+        <b>Layer Properties</b> 
+    <!-- Table for the viz-->
+    
+    
+  </div>
+</div>
+
+  <!--Simple Javascript-->
+  <script>
+    document.getElementById("li-viz").classList.add("sidebar-select");
+  </script>
+
+<script>
+    document.getElementById("select-dataset-form").onchange = function () {
+      // submitting the form
+      document.getElementById("select-dataset-form").submit();
+    };
+  </script>
+
+<script>
+    document.getElementById("select-chartype-form").onchange = function () {
+      // submitting the form
+      document.getElementById("select-chartype-form").submit();
+    };
+  </script>
+
+
+  {% endblock dashboard_content %}
+</div>

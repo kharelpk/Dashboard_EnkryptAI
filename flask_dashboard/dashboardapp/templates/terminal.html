@@ -1,0 +1,41 @@
+{% extends "layout_dashboard.html" %} {% block dashboard_content %}
+<!--Account page-->
+<!-- Main title-->
+<div class="main-title">
+  <p class="font-weight-bold">TERMINAL</p>
+</div>
+
+<!-- Main content goes here-->
+<div class="main-terminal">
+  <div class="content-terminal">
+    <!-- Header containing execute button-->
+
+    <div class="header-terminal">
+      <!-- Add button-->
+      <form
+        method="POST"
+        action="{{url_for('terminal')}}"
+        id="upload-terminal-form"
+        enctype="multipart/form-data"
+      >
+        <input type="file" id="add-terminal-btn" name="file" hidden />
+        <!--our custom file upload button-->
+        <label for="run-terminal-btn" id="run-label"
+          ><span class="material-icons-outlined">play_circle </span>Run</label
+        >
+        <!-- Auto trigger submission-->
+        <input type="submit" hidden />
+      </form>
+    </div>
+
+    <div class="input-terminal">Code goes here</div>
+
+    <hr />
+  </div>
+  <!--Simple Javascript-->
+  <script>
+    document.getElementById("li-terminal").classList.add("sidebar-select");
+  </script>
+
+  {% endblock dashboard_content %}
+</div>
