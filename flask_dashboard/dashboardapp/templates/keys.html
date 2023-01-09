@@ -32,7 +32,7 @@
 
     <!-- Warning message-->
     <p>{{warning}}</p>
-        <b>10 active keys</b> 
+        <b>{{num_keys}} active keys</b> 
     <!-- Table for the keys-->
     
     {% for key in keys %}
@@ -46,10 +46,8 @@
                         <td>
                             <p><span class="keys-text-labels">Key ID: </span><span class="keys-text-data">{{key.key_id}}</span></p>
                         </td>
-                    </tr>
-                    <tr>
                         <td>
-                            <p><span class="keys-text-labels">Filename: </span><span class="keys-text-data">{{key.filename}}</span></p> 
+                          <p><span class="keys-text-labels">Filename: </span><span class="keys-text-data">{{key.filename}}</span></p> 
                         </td>
                     </tr>
                 </tbody>

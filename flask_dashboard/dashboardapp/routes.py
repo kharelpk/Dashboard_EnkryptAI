@@ -68,13 +68,36 @@ def dashboard():
         db_count = Datasets.query.count()
         user_count = User.query.count()
         api_count = APIUsage.query.count()
-        alerts = 2 # dummy value
+        # Encryption type is used to specify 'Statistics', 'Visualization', 'Encrypt-decrypt', 'Training', 'Inference'
+        statistics_count = APIUsage.query.filter_by(call_type ='statistics').count()
+        visualization_count = APIUsage.query.filter_by(call_type ='Visualization').count()
+        encryption_count = APIUsage.query.filter_by(call_type ='Encrypt-decrypt').count()
+        training_count = APIUsage.query.filter_by(call_type ='Training').count()
+        inference_count = APIUsage.query.filter_by(call_type ='Inference').count()
+        alerts = 0 # dummy value
     else:
         db_count = Datasets.query.filter_by(user_id=current_user.id).count()
         user_count = 1
         api_count = APIUsage.query.filter_by(user_id=current_user.id).count()
-        alerts = 2
-    return render_template("home.html", title='Encryption Dashboard', db_count=db_count, user_count=user_count, api_count=api_count, alerts = alerts)
+        alerts = 0
+
+        statistics_count = APIUsage.query.filter_by(call_type ='statistics',user_id=current_user.id).count()
+        visualization_count = APIUsage.query.filter_by(call_type ='Visualization',user_id=current_user.id).count()
+        encryption_count = APIUsage.query.filter_by(call_type ='Encrypt-decrypt',user_id=current_user.id).count()
+        training_count = APIUsage.query.filter_by(call_type ='Training',user_id=current_user.id).count()
+        inference_count = APIUsage.query.filter_by(call_type ='Inference',user_id=current_user.id).count()
+    
+    api_calls = {'Statistics':statistics_count, 
+                'Visualization':visualization_count, 
+                'Encrypt-decrypt':encryption_count, 
+                'Training':training_count, 
+                'Inference':inference_count}
+    print(list(api_calls.keys()))           
+    return render_template("home.html", title='Encryption Dashboard',
+                             db_count=db_count, user_count=user_count, 
+                             api_count=api_count, alerts = alerts, 
+                             api_calls_values=list(api_calls.values()),
+                             api_calls_keys= list(api_calls.keys()))
 
 # Route for the dashboard page
 @app.route("/logout")
@@ -246,8 +269,8 @@ def keyaccess():
     else:
         datasets = Datasets.query.filter_by(user_id=current_user.id)
 
-
-    return render_template('keys.html', title='Keys', warning=warning, keys=key_access_status)
+    num_keys = len(key_access_status)
+    return render_template('keys.html', title='Keys', warning=warning, keys=key_access_status, num_keys=num_keys)
 
 
 # Get column names

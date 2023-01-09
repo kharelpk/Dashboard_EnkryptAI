@@ -139,9 +139,9 @@
             <span class="material-icons-outlined">manage_accounts</span>Account
           </li>
 
-          <li class="sidebar-list-item">
+          <!-- <li class="sidebar-list-item">
             <span class="material-icons-outlined">settings</span>Settings
-          </li>
+          </li> -->
 
           <li class="sidebar-list-item">
             <span class="material-icons-outlined">help_outline</span>Help
@@ -149,7 +149,13 @@
         </ul>
       </aside>
       <!-- End Sidebar -->
-
+      <!-- ApexCharts -->
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.36.3/apexcharts.min.js"
+        integrity="sha512-sa449wQ9TM6SvZV7TK7Zx/SjVR6bc7lR8tRz1Ar4/R6X2jOLaFln/9C+6Ak2OkAKZ/xBAKJ94dQMeYa0JT1RLg=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+      ></script>
       <!-- Main -->
       <main class="main-container">
         {% block dashboard_content %}{% endblock %}
@@ -159,15 +165,6 @@
 
     <!-- Scripts -->
 
-    <!-- ApexCharts -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.36.3/apexcharts.min.js"
-      integrity="sha512-sa449wQ9TM6SvZV7TK7Zx/SjVR6bc7lR8tRz1Ar4/R6X2jOLaFln/9C+6Ak2OkAKZ/xBAKJ94dQMeYa0JT1RLg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-
-    
     <!-- Custom Javascript -->
     <script src="./static/js/scripts.js"></script>
   </body>

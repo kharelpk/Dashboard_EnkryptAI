@@ -5,84 +5,84 @@
   <p class="font-weight-bold">UPDATE ACCOUNT</p>
 </div>
 
-<div class="content-section">
-  <div class="media">
-    <img class="rounded-circle account-img" src="{{image_file}}" width="75px" />
-    <div class="media-body">
-      <!-- Username and email-->
-      <h3 class="account-heading">
-        {{current_user.firstname}} {{current_user.lastname}}
-      </h3>
-      <p class="text-secondary">{{current_user.email}}</p>
+<div class="main-account-header">
+  <div class="account-container-header">
+    <div class="account-container-inner">
+      <img class="account-img" src="{{image_file}}" width="150px" />
+      <div class="account-info">
+        <!-- Username and email-->
+        <h3 class="account-heading">
+          {{current_user.firstname}} {{current_user.lastname}}
+        </h3>
+        <p class="text-secondary">{{current_user.email}}</p>
+        <!-- FORM HERE to update the email account-->
+      </div>
     </div>
-  </div>
 
   <!-- FORM HERE to update the email account-->
   <!-- Form-->
   <!-- Need to specificy encryption type since we are also passing image data-->
-  <form method="POST" action="" enctype="multipart/form-data">
-    {{form.hidden_tag()}}
-    <fieldset class="form-group">
-      <!-- <legend class="border-bottom mb-4">Account Info</legend> -->
-      <div class="form-group">
-        {{form.firstname.label(class="form-control-label")}}
-        <!-- Form validation -->
-        {% if form.firstname.errors%} {{form.firstname(class="form-control
-        is-invalid")}}
-        <div class="invalid-feedback">
-          {% for error in form.firstname.errors%}
-          <span>{{error}}</span>
-          {% endfor %}
+
+    <form method="POST" action="" enctype="multipart/form-data">
+      {{form.hidden_tag()}}
+      <!-- <fieldset class="form-group"> -->
+        <!-- <legend class="border-bottom mb-4">Account Info</legend> -->
+        <div class="form-group">
+          {{form.firstname.label(class="form-control-label")}}
+          <!-- Form validation -->
+          {% if form.firstname.errors%} {{form.firstname(class="form-control
+          is-invalid")}}
+          <div class="invalid-feedback">
+            {% for error in form.firstname.errors%}
+            <span>{{error}}</span>
+            {% endfor %}
+          </div>
+          {% else %} {{form.firstname(class="form-control ")}} {% endif %}
         </div>
-        {% else %} {{form.firstname(class="form-control ")}} {% endif %}
-      </div>
-
-      <div class="form-group">
-        {{form.lastname.label(class="form-control-label")}}
-        <!-- Form validation -->
-        {% if form.lastname.errors%} {{form.lastname(class="form-control
-        is-invalid")}}
-        <div class="invalid-feedback">
-          {% for error in form.lastname.errors%}
-          <span>{{error}}</span>
-          {% endfor %}
+  
+        <div class="form-group">
+          {{form.lastname.label(class="form-control-label")}}
+          <!-- Form validation -->
+          {% if form.lastname.errors%} {{form.lastname(class="form-control
+          is-invalid")}}
+          <div class="invalid-feedback">
+            {% for error in form.lastname.errors%}
+            <span>{{error}}</span>
+            {% endfor %}
+          </div>
+          {% else %} {{form.lastname(class="form-control ")}} {% endif %}
         </div>
-        {% else %} {{form.lastname(class="form-control ")}} {% endif %}
-      </div>
-
-      <div class="form-group">
-        {{form.email.label(class="form-control-label")}}
-        <!-- Form validation -->
-        {% if form.email.errors%} {{form.email(class="form-control
-        is-invalid")}}
-        <div class="invalid-feedback">
-          {% for error in form.email.errors %}
-          <span>{{error}}</span>
-          {% endfor %}
+  
+        <div class="form-group">
+          {{form.email.label(class="form-control-label")}}
+          <!-- Form validation -->
+          {% if form.email.errors%} {{form.email(class="form-control
+          is-invalid")}}
+          <div class="invalid-feedback">
+            {% for error in form.email.errors %}
+            <span>{{error}}</span>
+            {% endfor %}
+          </div>
+          {% else %} {{form.email(class="form-control ")}} {% endif %}
         </div>
-        {% else %} {{form.email(class="form-control ")}} {% endif %}
+  
+        <div class="form-group">
+          {{form.picture.label()}}
+          {{form.picture(class="form-control-file")}} {% if
+          form.picture.errors %} {% for error in form.picture.errors %}
+          </br><span class ="text-danger">{{error}}</span>
+          {% endfor %} {% endif %}
+        </div>
+      <!-- </fieldset> -->
+      <div class="form-group mt-2">
+        {{form.submit(class = "btn btn-outline-primary")}}
       </div>
+    </form>
+  
+  </div>
+</div>
 
-      <div class="form-group">
-        {{form.picture.label()}}
-        {{form.picture(class="form-control-file")}} {% if
-        form.picture.errors %} {% for error in form.picture.errors %}
-        </br><span class ="text-danger">{{error}}</span>
-        {% endfor %} {% endif %}
-      </div>
-    </fieldset>
-    <div class="form-group mt-2">
-      {{form.submit(class = "btn btn-outline-primary")}}
-    </div>
-  </form>
-
-  <!--OPENS UP ADDITIONAL THINGS if you are a ADMIN-->
-  <hr />
-  {% if current_user.firstname == "Admin" %}
-  <p>You have admin priviledges</p>
-  {% else %}
-  <p>You are not an admin</p>
-  {% endif %}
+  
 </div>
 
 <!--Simple Javascript-->
