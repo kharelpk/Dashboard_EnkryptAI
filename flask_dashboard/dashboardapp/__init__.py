@@ -3,28 +3,16 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
-import os
+from dashboardapp.config import Config
 
 
 
-# statement to create flask app
-app = Flask(__name__)
-# The session key is in the environment variable
-app.config['SECRET_KEY']='93c34a429a3473ca9cbd70ab5c6b931a'
-# Setup the database (two seperates ones for data and keys)
-app.config['SQLALCHEMY_DATABASE_URI']= 'sqlite:///site.db'
-
-app.config['SQLALCHEMY_BINDS']= {
-    'keys':'sqlite:///keys.db'}
-# Upload extensions for datasets
-app.config['UPLOAD_EXTENSIONS'] = ['.db', '.csv']
 # Create the database
-db=SQLAlchemy(app)
-
+db=SQLAlchemy()
 # Password manager
-bcrypt = Bcrypt(app)
+bcrypt = Bcrypt()
 # Login manager
-login_manager = LoginManager(app)
+login_manager = LoginManager()
 # Set the login route (function name of the route)
 login_manager.login_view = 'login'
 # Blue info alert from bootstrap
@@ -34,4 +22,27 @@ login_manager.login_message_category='info'
 # Graph types
 CHART_OPTIONS = ['HISTOGRAM', 'PIE CHART', 'BAR CHART']
 ADMIN_EMAIL = 'admin@admin.com'
-from dashboardapp import routes
+
+
+
+def create_app(config_class = Config):
+    # statement to create flask app
+    app = Flask(__name__)
+    app.config.from_object(Config)
+
+    db.init_app(app)
+
+    # Password manager
+    bcrypt.init_app(app)
+    # Login manager
+    login_manager.init_app(app)
+
+    from dashboardapp.users.routes import users
+    from dashboardapp.main.routes import main
+    app.register_blueprint(users)
+    app.register_blueprint(main)
+
+    return app
+
+
+

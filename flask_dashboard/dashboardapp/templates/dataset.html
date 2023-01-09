@@ -15,7 +15,7 @@
       <!-- Add button-->
       <form
         method="POST"
-        action="{{url_for('dataset')}}"
+        action="{{url_for('main.dataset')}}"
         id="upload-dataset-form"
         enctype="multipart/form-data"
       >
@@ -67,7 +67,7 @@
                 {% for data in datasets %}
                 <tr class="border-bottom">
                     <th scope="row"><input type="checkbox" disabled="disabled" name="keywords" value="keywords"/></th>
-                    <td><a class= "table-data-filename" href="{{url_for('dataview',dataset_id = data.id )}}">{{data.filename}}</a></td>
+                    <td><a class= "table-data-filename" href="{{url_for('main.dataview',dataset_id = data.id )}}">{{data.filename}}</a></td>
                     <td>
                         {{data.owner.firstname}} {{data.owner.lastname}}
                     </td>

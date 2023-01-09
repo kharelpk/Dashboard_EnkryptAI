@@ -51,17 +51,17 @@
           <span class="material-icons-outlined">notifications</span>
           <span
             class="material-icons-outlined"
-            onclick="window.location.href='{{url_for('account')}}';"
+            onclick="window.location.href='{{url_for('users.account')}}';"
             >account_circle</span
           >
           <span
             class="login-name"
-            onclick="window.location.href='{{url_for('account')}}';"
+            onclick="window.location.href='{{url_for('users.account')}}';"
             >{{current_user.firstname}} {{current_user.lastname}}</span
           >
           <span
             class="material-icons-outlined"
-            onclick="window.location.href='{{url_for('logout')}}';"
+            onclick="window.location.href='{{url_for('users.logout')}}';"
             id="logout-icon"
             >logout</span
           >
@@ -94,7 +94,7 @@
           <li
             class="sidebar-list-item"
             id="li-home"
-            onclick="window.location.href='{{url_for('dashboard')}}';"
+            onclick="window.location.href='{{url_for('main.dashboard')}}';"
           >
             <span class="material-icons-outlined">dashboard</span>Home
           </li>
@@ -102,7 +102,7 @@
           <li
             class="sidebar-list-item"
             id="li-dataset"
-            onclick="window.location.href='{{url_for('dataset')}}';"
+            onclick="window.location.href='{{url_for('main.dataset')}}';"
           >
             <span class="material-icons-outlined">folder_open</span>Dataset
           </li>
@@ -110,7 +110,7 @@
           <li
             class="sidebar-list-item"
             id="li-viz"
-            onclick="window.location.href='{{url_for('visualization')}}';"
+            onclick="window.location.href='{{url_for('main.visualization')}}';"
           >
             <span class="material-icons-outlined">auto_graph</span>Visualization
           </li>
@@ -118,7 +118,7 @@
           <li
             class="sidebar-list-item"
             id="li-terminal"
-            onclick="window.location.href='{{url_for('terminal')}}';"
+            onclick="window.location.href='{{url_for('main.terminal')}}';"
           >
             <span class="material-icons-outlined">terminal</span>Terminal
           </li>
@@ -126,7 +126,7 @@
           <li
             class="sidebar-list-item"
             id="li-keys"
-            onclick="window.location.href='{{url_for('keyaccess')}}';"
+            onclick="window.location.href='{{url_for('main.keyaccess')}}';"
           >
             <span class="material-icons-outlined">key</span>Keys
           </li>
@@ -134,7 +134,7 @@
           <li
             class="sidebar-list-item"
             id="li-account"
-            onclick="window.location.href='{{url_for('account')}}';"
+            onclick="window.location.href='{{url_for('users.account')}}';"
           >
             <span class="material-icons-outlined">manage_accounts</span>Account
           </li>
@@ -143,7 +143,11 @@
             <span class="material-icons-outlined">settings</span>Settings
           </li> -->
 
-          <li class="sidebar-list-item">
+          <li
+            class="sidebar-list-item"
+            id="li-help"
+            onclick="window.location.href='{{url_for('main.help')}}';"
+          >
             <span class="material-icons-outlined">help_outline</span>Help
           </li>
         </ul>

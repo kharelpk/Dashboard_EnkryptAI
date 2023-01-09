@@ -14,7 +14,7 @@
       <!-- Add button-->
       <form
         method="POST"
-        action="{{url_for('terminal')}}"
+        action="{{url_for('main.terminal')}}"
         id="upload-terminal-form"
         enctype="multipart/form-data"
       >
@@ -25,10 +25,16 @@
         >
         <!-- Auto trigger submission-->
         <input type="submit" hidden />
-      </form>
-    </div>
 
-    <div class="input-terminal">Code goes here</div>
+        <div class="input-terminal">
+          <textarea id="code_block"></textarea>
+        </div>
+      </form>
+      <p>Output</p>
+      <div class="input-terminal">
+        <textarea id="output_block" disabled></textarea>
+      </div>
+    </div>
 
     <hr />
   </div>

@@ -1,0 +1,45 @@
+{% extends "layout_dashboard.html" %} {% block dashboard_content %}
+<!--Account page-->
+<!-- Main title-->
+<div class="main-title">
+  <p class="font-weight-bold">HELP</p>
+</div>
+
+<!-- Main content goes here-->
+
+<!--We want ADD, CLONE, DELETE functionality-->
+<div class="main-keys">
+  <div class="content-keys">
+    <!-- Header for the keys table-->
+    <div class="header-keys">
+      <!-- Add button-->
+
+    </div>
+
+    <!-- Warning message-->
+    <p>{{warning}}</p>
+    
+    <h4>Getting started</h4>
+    <p>This dashboard allows you to load a raw data file, encrypt it, and then run visualizations on encrypted data. 
+        For this particular demo, we will a use .csv file. 
+    </p>
+    <ol>
+        <li>To upload your data, go to the <strong>Dataset</strong> tab.</li>
+        <li>Then click the <strong>Add</strong> button and upload a .csv file.</li>
+        <li>Click on the <i>[Dataset Name]</i> for the file you just uploaded to view the unencrypted contents.</li>
+        <li>Next, you can encrypt the data by clicking the <strong>Encrypt</strong> button. </li>
+        <li>Now use the <strong>visualization</strong> tab to generate various graphs on this encrypted dataset.</li>
+    </ol>
+    <p>Note that the <strong>Home</strong> tab gives you a dashboard view to track various databases, API calls, and user accounts.</p>
+        
+  </div>
+</div>
+
+  <!--Simple Javascript-->
+  <script>
+    document.getElementById("li-help").classList.add("sidebar-select");
+  </script>
+
+
+  {% endblock dashboard_content %}
+</div>
